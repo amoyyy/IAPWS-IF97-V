@@ -382,9 +382,9 @@ fn bw3_t_ph(p f64, h f64) f64{
 fn bw3_t_ps(p f64, s f64) f64{
 	sc := 4.41202148223476
     if s <= sc{
-        return bw3a_t_ps(h, s)
+        return bw3a_t_ps(p, s)
 	}else{
-        return bw3b_t_ps(h, s)
+        return bw3b_t_ps(p, s)
 	}
 }
 
@@ -392,9 +392,9 @@ fn bw3_t_ps(p f64, s f64) f64{
 fn bw3_v_ps(p f64, s f64) f64{
 	sc := 4.41202148223476
     if s <= sc{
-        return bw3a_v_ps(h, s)
+        return bw3a_v_ps(p, s)
 	}else{
-        return bw3b_v_ps(h, s)
+        return bw3b_v_ps(p, s)
 	}
 }
 

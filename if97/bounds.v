@@ -157,3 +157,8 @@ pub fn b3_psat_s(s f64) f64{
 	}
 }
 
+// h=f(P), Supp-Tv(ph,ps)3-2014.pdf, Eq 1, boundary between Region 3a/3b
+pub fn b3ab_h_p(p f64) f64{
+	// if97_pcrit ≤ p ≤ 100.0Mpa
+	return hp_b3ab[0]+(hp_b3ab[1]+(hp_b3ab[2]+hp_b3ab[3]*p)*p)*p
+}
