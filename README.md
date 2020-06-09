@@ -2,6 +2,12 @@
 WORK IN PROGRESS  
 V module that provides IAPWS-IF97 and some helper functions
 
+IAPWS-IF95 support will be provided later.
+
+Install:
+        
+	v install amoyyy.iapws97
+
 Usage:
 	
 	import amoyyy.iapws97.if97
