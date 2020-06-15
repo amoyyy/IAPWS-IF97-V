@@ -399,6 +399,29 @@ fn bw3_v_ps(p f64, s f64) f64{
 }
 
 //****************************************************************
+// SUB-REGION 3 backwards
+//****************************************************************
+// v=f(P,T,x), Supp-VPT3-2016.pdf, Eq. 4-5
+pub fn bw3_v_pt(p f64, t f64, s string) f64{
+	mut pi := p/r3s[s].p_ - r3s[s].a_
+	mut tau := t/r3s[s].t_ - r3s[s].b_
+	if r3s[s].c_r > 1 {pi = math.sqrt(pi)}					// for c = 0.5
+	if r3s[s].d_r > 1 {tau = math.sqrt(math.sqrt(tau))}		// for d = 0.25
+
+    mut v := 0.0
+	for d in r3s[s].ijn_{
+		v += d.n_ * ipow2(pi, tau, d.i_, d.j_)
+	}
+
+    if s == "n" {
+		v = math.exp(v)
+	}else if r3s[s].e_ > 1 {
+		v = sq(sq(v))
+	}
+    return r3s[s].v_*v
+}
+
+//****************************************************************
 // REGION 4 backwards
 //****************************************************************
 // T=f(h,s), Supp-phs3-2014.pdf. Eq 9
@@ -411,7 +434,3 @@ pub fn bw4_t_hs(h f64, s f64) f64{
 	}
     return 550 * t
 }
-
-
-
-
