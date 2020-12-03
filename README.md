@@ -1,8 +1,6 @@
 # IAPWS V Package
 
-V module that provides IAPWS-IF97 and some helper functions, WORK IN PROGRESS
-
-IAPWS-IF95 support will be provided later.
+V module that provides IAPWS-IF97, IAPWS-IF95 support and some helper functions, WORK IN PROGRESS
 
 References: http://iapws.org/release.html
 
