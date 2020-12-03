@@ -6,11 +6,11 @@ References: http://iapws.org/release.html
 
 Install:
         
-	v install amoyyy.iapws97
+	v install amoyyy.iapws
 
 Usage:
 	
-	import amoyyy.iapws97.if97
+	import amoyyy.iapws.if97
 	t := 700.0	// K
 	p := 30.0	// Mpa
 	
