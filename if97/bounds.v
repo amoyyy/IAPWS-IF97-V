@@ -23,11 +23,12 @@ import math
 //****************************************************************
 // h=f(s), Supp-phs3-2014.pdf. Eq 7, Boundary between Regions 1 and 3
 pub fn b13_h_s(s f64) f64{
-	// s(100MPa,623.15K) â‰¤ s â‰¤ s'(623.15K)
+	// s(100MPa,623.15K) â‰? s â‰? s'(623.15K)
     error_input := s < 3.397782955 || s > 3.77828134
 	
 	if error_input {
-		error("B13_H_S input out of bound")
+		//error("B13_H_S input out of bound")
+		return 0.0
 	}else{
 		sigma_1 := s/3.8 - 0.884
 		sigma_2 := s/3.8 - 0.864
@@ -44,11 +45,12 @@ pub fn b13_h_s(s f64) f64{
 //****************************************************************
 // h=f(s), Supp-phs3-2014.pdf. Eq 3
 pub fn b14_h_s(s f64) f64{
-	// s'(273.15K) â‰¤ s â‰¤ s'(623.15K)
+	// s'(273.15K) â‰? s â‰? s'(623.15K)
 	error_input := s < -1.545495919e-4 || s > 3.77828134
 	
 	if error_input{
-		error("B14_H1_S input out of bound")
+		//error("B14_H1_S input out of bound")
+		return 0.0
 	}else{
 		sigma_1 := s/3.8 - 1.09
 		sigma_2 := s/3.8 + 0.366e-4
@@ -76,12 +78,13 @@ pub fn b23_t_p(p f64) f64{
 
 // T=f(h,s), Supp-phs3-2014.pdf. Eq 8, boundary between Region 2 and 3
 pub fn b23_t_hs(h f64, s f64) f64{
-	// 5.048096828 â‰¤ s â‰¤ 5.260578707
-    // 2.563592004e3 â‰¤ h â‰¤ 2.812942061e3
+	// 5.048096828 â‰? s â‰? 5.260578707
+    // 2.563592004e3 â‰? h â‰? 2.812942061e3
     error_input := h < 2.563592004e3 || h > 2.812942061e3 || s < 5.048096828 || s > 5.260578707
 
 	if error_input{
-		error("B23_T_HS input out of bound")
+		//error("B23_T_HS input out of bound")
+		return 0.0
 	}else{
 		yita_ := h/3000.0 - 0.727
 		sigma_ := s/5.3 - 0.864
@@ -113,7 +116,8 @@ pub fn b2ab_h_s(s f64) f64{
     error_input := s < 6.069709159519128 || s > 7.85234039987851
 
     if error_input{
-        error("B2AB_H_S input not valid")
+        //error("B2AB_H_S input not valid")
+		return 0.0
     }
     return ((hs_b2ab[3]*s+hs_b2ab[2])*s+hs_b2ab[1])*s+hs_b2ab[0]
 }
@@ -123,11 +127,12 @@ pub fn b2ab_h_s(s f64) f64{
 //****************************************************************
 // P=f(h), Supp-Tv(ph,ps)3-2014.pdf, Eq 10, (Region3 Saturated Line)
 pub fn b3_psat_h(h f64) f64{
-	// h'(623.15K) â‰¤ h â‰¤ h''(623.15K)
+	// h'(623.15K) â‰? h â‰? h''(623.15K)
     error_input := h < 1.670858218e3 || h > 2.563592004e3
 
 	if error_input{
-		error("B3_PSAT_H input out of bound")
+		//error("B3_PSAT_H input out of bound")
+		return 0.0
 	}else{
 		yita_1 := h/2600.0 - 1.02
 		yita_2 := h/2600.0 - 0.608
@@ -141,11 +146,12 @@ pub fn b3_psat_h(h f64) f64{
 
 // P=f(s), Supp-Tv(ph,ps)3-2014.pdf, Eq 11, (Saturated Line)
 pub fn b3_psat_s(s f64) f64{
-    // r1_s(623.15K) â‰¤ s â‰¤ r2_s(623.15K)
+    // r1_s(623.15K) â‰? s â‰? r2_s(623.15K)
 	error_input := s < 3.778281340 || s > 5.210887825
 
 	if error_input{
-		error("B3_PSAT_S input out of bound")
+		//error("B3_PSAT_S input out of bound")
+		return 0.0
 	}else{
 		sigma_1 := s/5.2 - 1.03
 		sigma_2 := s/5.2 - 0.699
@@ -159,6 +165,6 @@ pub fn b3_psat_s(s f64) f64{
 
 // h=f(P), Supp-Tv(ph,ps)3-2014.pdf, Eq 1, boundary between Region 3a/3b
 pub fn b3ab_h_p(p f64) f64{
-	// if97_pcrit â‰¤ p â‰¤ 100.0Mpa
+	// if97_pcrit â‰? p â‰? 100.0Mpa
 	return hp_b3ab[0]+(hp_b3ab[1]+(hp_b3ab[2]+hp_b3ab[3]*p)*p)*p
 }
